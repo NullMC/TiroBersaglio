@@ -9,10 +9,11 @@ scrollLink.addEventListener("click", scrollToId);
 let scrollButton = document.querySelector("#scroll-button");
 scrollButton.addEventListener("click", scrollToId);
 
-let centerX = 450;
-let centerY = 450;
+let centerX = 300; // Centrato nel canvas 600x600
+let centerY = 300;
 let totalPoints = 0;
-let hits = 0;
+let hits = 0; // Tutti i colpi che colpiscono il bersaglio
+let bullseyes = 0; // Solo i bullseye (centro)
 let totalShots = 0;
 let canvas;
 let showStats = false;
@@ -23,7 +24,7 @@ function setup() {
     canvas.mousePressed(checkHit);
     noLoop();
     
-    // Responsive canvas
+    // Responsive canvas con centri corretti
     if (window.innerWidth < 768) {
         resizeCanvas(300, 300);
         centerX = 150;
@@ -36,7 +37,8 @@ function setup() {
 }
 
 function draw() {
-    background(22, 22, 22);
+    // Sfondo del contenitore: #ffdede convertito in RGB
+    background(255, 222, 222);
     drawTarget(width / 2, height / 2, width * 0.8);
 }
 
@@ -46,7 +48,7 @@ function drawTarget(x, y, size) {
         color(200, 200, 200),  // Light gray
         color(70, 130, 220),   // Blue
         color(220, 50, 50),    // Red
-        color(255, 215, 0)     // Gold
+        color(255, 215, 0)     // Gold (centro)
     ];
     let rings = colors.length;
     let step = size / rings;
@@ -75,7 +77,7 @@ function drawTarget(x, y, size) {
 }
 
 function checkHit() {
-    let d = dist(mouseX, mouseY, centerX, centerY);
+    let d = dist(mouseX, mouseY, width/2, height/2); // Usa il centro effettivo del canvas
     let message = document.getElementById("message");
     let counter = document.getElementById("counter");
     let pointsDisplay = document.getElementById("points");
@@ -91,18 +93,23 @@ function checkHit() {
         score = 35;
         feedback = "Perfect shot! Bullseye!";
         hits++;
+        bullseyes++; // Incrementa solo per i bullseye
     } else if (d < maxRadius * 0.4) {
         score = 25;
         feedback = "Excellent accuracy";
+        hits++;
     } else if (d < maxRadius * 0.6) {
         score = 15;
         feedback = "Good shot";
+        hits++;
     } else if (d < maxRadius * 0.8) {
         score = 10;
         feedback = "On target";
+        hits++;
     } else if (d < maxRadius) {
         score = 5;
         feedback = "Target hit";
+        hits++;
     }
 
     if (score > 0) {
@@ -118,10 +125,11 @@ function checkHit() {
         message.textContent = "Shot missed";
     }
 
-    counter.textContent = hits;
+    // Aggiorna il counter con i bullseye, non tutti i colpi
+    counter.textContent = bullseyes;
     pointsDisplay.textContent = totalPoints;
     
-    // Update accuracy bar
+    // Update accuracy bar basata sui colpi che colpiscono il bersaglio
     let accuracy = totalShots > 0 ? (hits / totalShots) * 100 : 0;
     accuracyBar.style.width = accuracy + '%';
 }
@@ -129,6 +137,7 @@ function checkHit() {
 function resetGame() {
     totalPoints = 0;
     hits = 0;
+    bullseyes = 0;
     totalShots = 0;
     document.getElementById("message").textContent = "Click on the target to begin";
     document.getElementById("counter").textContent = "0";

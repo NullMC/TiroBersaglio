@@ -139,7 +139,7 @@ h1{
 .row .btn:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
 
-    background-color: white;
+    background-color: #ffdede;
     border-color: #fb2f2c;
     border: solid 2px;
     color: #fb2f2c;
