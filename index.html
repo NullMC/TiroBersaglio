@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Target Training - Precision Game</title>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+
+        <link rel="stylesheet" href="static/CSS/index.css">
+        <link rel="shortcut icon" href="static/css/imgs/ircon.png" type="image/x-icon">
+
+    </head>
+    <body>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid d-inline-block align-content-center" id="nav-content-container">
+
+                <a class="navbar-brand" href="https://p5js.org/" target="_blank">
+                    <img src="static/CSS/imgs/ircon.png" class="logo" alt="logo" width="50px" height="50px">
+                </a>
+                <a href="https://www.panettipitagora.edu.it" target="_blank" class="navbar-brand">
+                    <img src="static/CSS/imgs/panetti-logo.png" alt="Panetti-Pitagora" width="85px" height="85px"">
+                </a>
+    
+                <ul class="d-inline-block nav mt-3">
+                    <li class="nav-item">
+                        <button type="button" class="btn nav-link active" id="scroll-link">scroll to section
+                            <img class="me-2 ms-2" src="static/CSS/imgs/Polygon 1.png" alt="scroll arrow" height="10px" width="8px">
+                        </button>
+                    </li>
+                </ul>
+
+            </div>    
+        </nav>
+
+        <div class="hero-image">
+            <div class="container-fluid">
+                <div class="hero-sides">
+                    <div class="left-side">
+                        <div class="row">
+                            <h1 class="titillium-web-bold-italic">Hit the Bullseye</h1>    
+                        </div>
+                        <div class="row">
+
+                            <svg class="d-inline" width="50" height="50" viewBox="0 0 50 50">
+                                
+                                <g filter="url(#filter0_f_2_20)">
+                                  <circle cx="25" cy="25" r="10" fill="#fb2f2c"/>
+                                </g>
+                                <path d="M36 26C36 31.5228 31.5228 36 26 36C20.4772 36 16 31.5228 16 26C16 20.4772 20.4772 16 26 16C31.5228 16 36 20.4772 36 26Z" fill="#fb2f2c"/>
+                                <defs>
+                                  <filter id="filter0_f_2_20" x="0" y="0" width="52" height="52" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                    <feGaussianBlur stdDeviation="8" result="effect1_foregroundBlur_2_20"/>
+                                  </filter>
+                                </defs>
+
+                            </svg>
+
+                            <h2 class="titillium-web-regular">P5 Library Testing</h2>
+
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-lg titillium-web-regular" id="scroll-button">discover more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="SubSection" id="SubSection">
+            
+            <div class="main-container">
+                
+                <div class="instructions">
+                    <h3 class="instructions-title">Instructions</h3>
+                    <p class="instructions-text">Click on the target to score points. Accuracy determines your score: center shots earn maximum points (35pt), while outer rings provide fewer points. Track your precision and improve your aim.</p>
+                </div>
+                
+                <div class="game-layout">
+                    <div class="canvas-section">
+                        <div id="canvas"></div>
+                    </div>
+                    
+                    <div class="stats-panel">
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-label">Total Score</span>
+                            </div>
+                            <p class="stat-value" id="points">0</p>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-label">Bullseyes</span>
+                            </div>
+                            <p class="stat-value" id="counter">0</p>
+                            <div class="accuracy-bar">
+                                <div class="accuracy-fill" id="accuracy-bar"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="status-card">
+                            <p class="status-message" id="message">Click on the target to begin</p>
+                        </div>
+                        
+                        <div class="controls">
+                            <button class="btn-primary" onclick="resetGame()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+        <footer class="site-footer">
+            <div class="card">
+                <div class="card-header">
+                    Quote
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>Made with love by:</p>
+                        <footer class="blockquote-footer">Frank -  <cite title="Source Title">from a school project to a professional web app</cite></footer>
+                        <footer class="blockquote-footer"><img src="static/CSS/imgs/resumee.png" alt="resumee"><cite title="Source Title"><a class="d-inline nav-link" href="https://franksitez.com/" target="_blank">franksitez.com</a></cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </footer>
+           
+        <script src="static/js/index.js"></script>
+    </body>
+</html>
